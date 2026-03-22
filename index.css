@@ -1,0 +1,220 @@
+
+header {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #bfe3e5 0%,   /* light teal */
+        #cfe6fb 40%,  /* light blue */
+        #ffd6c2 100%  /* light orange */
+    );
+}
+
+.top-banner {
+    width: 100%;
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+     background: linear-gradient(
+        90deg,
+        #2f9ea3,   /* teal (left) */
+        #5ab3e6,   /* light blue */
+        #f28c5b   /* orange */
+    );
+
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.banner-logo {
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* 🔥 centers everything */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    color: white;
+
+}
+
+.banner-text h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.banner-text h2 span {
+    transform: translateY(-2px); /* 🔥 tweak this */
+}
+
+.banner-text p {
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.title-box {
+    width: 95%;             
+    max-width: 1200px;       
+    margin: 20px auto 40px; 
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.main-title {
+    font-size: 52px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #2f3e46;   /* deep soft dark */
+
+    margin: 0;
+    letter-spacing: 1px;
+
+    text-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.subtitle {
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    color: #555;
+}
+.subtitle::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 4px;
+    margin: 20px auto 0;
+    border-radius: 10px;
+
+    background: #5ab3e6;
+}
+
+.dogs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dog-card {
+    width: calc(33.33% - 20px);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 🔥 key */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dog-card h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2f3e46;
+    margin: 18px  10px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+    display: inline-block;
+}
+
+.dog-card h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 6px auto 0;
+    border-radius: 10px;
+    background: #2f3e46;
+}
+
+.dog-card:hover {
+    transform: translateY(-10px) scale(1.02); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dog-card.male {
+    border: 2px solid #4da6ff;
+    background-color: #f0f8ff;
+}
+
+.dog-card.female {
+    border: 2px solid #ff66b2;
+    background-color: #fff0f6;
+}
+
+.dog-card.male:hover {
+    box-shadow: 0 15px 30px rgba(77, 166, 255, 0.4);
+}
+
+.dog-card.female:hover {
+    box-shadow: 0 15px 30px rgba(255, 102, 178, 0.4);
+}
+
+.dog-card.male h2::after {
+    background: #5ab3e6;
+}
+
+.dog-card.female h2::after {
+    background: #f28cb5;
+}
+
+.dog-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: transparent;
+     background-image: url("images/bones-bg.png");
+    border: 2px solid #008080;
+}
+
+.dog-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dog-image-wrapper:hover img {
+    object-fit: contain;
+    background: transparent;
+    transform: scale(1.1);
+}
+
+.more-info {
+    margin-top: auto;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #ffffff;
+   
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid #008080;
+
+    font-size: 15px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    color: #008080;
+}

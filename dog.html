@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Details</title>
+    <link rel="stylesheet" href="dog.css">
+    <link rel="icon" href="images/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <header class="top-banner">
+        <img src="images/banner.png" alt="Pawsitive Match" class="banner-logo">
+    </header>
+
+    
+    <main class="dog-page">
+        <div class="dog-container">
+            <section class="dog-details-card">
+                <div class="hero-image-container">
+                    <img src="" alt="Dog image" id="dog-image">
+                </div>
+
+                <h1 id="dog-name">DOG NAME</h1>
+
+                <div class="dog-info-grid">
+                    <div class="info-label">• Breed:</div>
+                    <div class="info-value" id="dog-breed">Breed</div>
+
+                    <div class="info-label">• Age:</div>
+                    <div class="info-value" id="dog-age">Age</div>
+
+                    <div class="info-label">• Gender:</div>
+                    <div class="info-value" id="dog-gender">Gender</div>
+
+                    <div class="info-label">• Vaccinated:</div>
+                    <div class="info-value">
+                        <span class="status-pill" id="dog-vaccinated"></span>
+                    </div>
+
+                    <div class="info-label">• House Trained:</div>
+                    <div class="info-value">
+                        <span class="status-pill" id="dog-house-trained"></span>
+                    </div>
+
+                    <div class="info-label">• Neutered:</div>
+                    <div class="info-value">
+                        <span class="status-pill" id="dog-neutered"></span>
+                    </div>
+
+                    <div class="info-label">• Story:</div>
+                    <div class="info-value" id="dog-story"></div>
+                </div>
+            <div class="card-adopt">
+                <a id="adopt-btn" href="adopt.html">
+                    <img src="images/adopt.png" alt="Adopt Me">
+                </a>
+            </div>
+            </section>
+
+            <div class="dog-actions">
+                <div class="action-left">
+                    <button id="prev-btn">← Previous</button>
+                </div>
+
+                <div class="action-center">
+                    <a href="index.html" class="middle-btn">Back to List</a>
+                </div>
+
+                <div class="action-right">
+                    <button id="next-btn">Next →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="dog.js"></script>
+</body>
+</html>
