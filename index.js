@@ -6,33 +6,39 @@ function fetchAllDogs() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetchAllDogs().then(function(dogs) {
-        const cards = document.querySelectorAll(".dog-card");
+    const cards = document.querySelectorAll(".dog-card");
 
-        cards.forEach(function(card, index) {
-            const dog = dogs[index];
+    const requests = [];
 
-            const img = card.querySelector("img");
-            const title = card.querySelector("h2");
-            const link = card.querySelector("a");
+    for (let i = 1; i <= cards.length; i++) {
+        requests.push(getDogDataById(i));
+    }
 
-            img.src = dog.first_image_url;
-            img.alt = dog.name;
+    Promise.all(requests)
+        .then(function (dogs) {
+            cards.forEach(function (card, index) {
+                const dog = dogs[index];
 
-            title.textContent = dog.name;
+                const img = card.querySelector("img");
+                const title = card.querySelector("h2");
+                const link = card.querySelector("a");
 
-            if (dog.sex === "Male") {
-                card.classList.add("male");
-            } else if (dog.sex === "Female") {
-                card.classList.add("female");
-            }
+                img.src = dog.first_image_url;
+                img.alt = dog.name;
 
-            link.href = "dog.html?id=" + (index + 1);
-            link.textContent = "More Info";
+                title.textContent = dog.name;
 
-            
+                if (dog.sex === "Male") {
+                    card.classList.add("male");
+                } else if (dog.sex === "Female") {
+                    card.classList.add("female");
+                }
+
+                link.href = "dog.html?id=" + (index + 1);
+                link.textContent = "More Info";
+            });
+        })
+        .catch(function (error) {
+            console.error("Error fetching dogs:", error);
         });
-    }).catch(function(error) {
-        console.error("Error fetching dogs:", error);
-    });
 });
