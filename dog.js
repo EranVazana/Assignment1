@@ -34,7 +34,17 @@ function formatStory(story) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let id = parseInt(getIdFromURL());
+    let id = parseInt(getIdFromURL(), 10);
+
+    const adoptBtn = document.getElementById("adopt-btn");
+    if (adoptBtn && Number.isInteger(id)) {
+        adoptBtn.href = "adopt.html?id=" + id;
+    }
+
+    if (Number.isInteger(id)) {
+        sessionStorage.setItem("selectedDogId", String(id));
+    }
+
     getDogDataById(id).then(function(dog) {
         document.getElementById("dog-image").src = dog.first_image_url;
         document.getElementById("dog-image").alt = dog.name;

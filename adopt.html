@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt a Friend</title>
+    <link rel="stylesheet" href="adopt.css">
+    <link rel="icon" href="images/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <header class="top-banner">
+        <img src="images/banner.png" alt="Pawsitive Match" class="banner-logo">
+    </header>
+
+    <main class="adopt-page">
+        <div class="adopt-container">
+            <section class="adopt-card">
+                <div class="dog-preview">
+                    <img src="" alt="Selected Dog" id="adopt-dog-image">
+                    <h1 id="adopt-title">Adopt [Dog Name]</h1>
+                </div>
+
+                <form id="adoption-form">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="example@mail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="050-0000000" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Enquiry 🐾</button>
+                </form>
+            </section>
+            
+            <div class="back-nav">
+                <a href="index.html" class="back-link">← Cancel and Back to List</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="adopt.js"></script>
+</body>
+</html>
