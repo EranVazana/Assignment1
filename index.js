@@ -1,23 +1,15 @@
-function fetchAllDogs() {
-    return fetch(BASE_URL + "/dogs")
-        .then(function(response) {
-            return response.json();
-        });
-}
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".dog-card");
 
-    const requests = [];
-
-    for (let i = 1; i <= cards.length; i++) {
-        requests.push(getDogDataById(i));
-    }
-
-    Promise.all(requests)
+    fetchAllDogs()
         .then(function (dogs) {
             cards.forEach(function (card, index) {
                 const dog = dogs[index];
+                if (!dog) {
+                    return;
+                }
 
                 const img = card.querySelector("img");
                 const title = card.querySelector("h2");
@@ -34,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     card.classList.add("female");
                 }
 
-                link.href = "dog.html?id=" + (index + 1);
+                link.href = "dog.html?id=" + index;
                 link.textContent = "More Info";
             });
         })
