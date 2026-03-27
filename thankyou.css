@@ -1,61 +1,90 @@
-/* thankyou.css - Page Specific Styles */
+/* thankyou.css - Styles specific to thankyou.html */
 
-.thank-you-card {
-    background-color: #ffffff;
-    border-radius: 15px;
+.thankyou-page {
+    padding: 40px 20px;
+}
+
+.thankyou-container {
+    width: min(94%, 550px);
+    margin: 0 auto;
+}
+
+.thankyou-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #5ab3e6;
+    border-radius: 20px;
     padding: 40px;
-    margin: 50px auto;
-    max-width: 500px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Dog info section */
-#dog-info {
-    margin-bottom: 25px;
+/* Circular dog preview */
+.dog-preview img {
+    width: 180px;
+    height: 180px;
 }
 
-.image-container {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    overflow: hidden; /* Ensures the image stays round */
-    border: 5px solid #f0f0f0;
-}
-
-#thank-you-dog-image {
-    width: 100%;
-    height: 100%;
-    /* CRITICAL: Requirement from assignment to avoid distortion */
-    object-fit: cover;
-}
-
-h2#thank-you-dog-name {
-    font-size: 2rem;
-    color: #333;
-    margin-top: 10px;
+#thank-you-dog-name {
+    font-size: 28px;
+    color: #2f3e46;
+    margin: 10px 0 20px;
 }
 
 .message {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #666;
+    font-size: 20px;
+    color: #28a745;
+    font-weight: 600;
     margin-bottom: 30px;
 }
 
-/* Navigation button styling */
-.navigation .back-link {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #4CAF50; /* Green theme for success */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+/* Gender-based card styling */
+.thankyou-card.male {
+    border-color: #5ab3e6;
+    background-color: #f0f8ff;
 }
 
-.navigation .back-link:hover {
-    background-color: #45a049;
+.thankyou-card.female {
+    border-color: #ff85b5;
+    background: #fff0f6;
+}
+
+.thankyou-card.female .dog-preview img {
+    border-color: #ff85b5;
+}
+
+.thankyou-card.male .dog-preview img {
+    border-color: #5ab3e6;
+}
+
+/* Back link - styled as button on thankyou page */
+.back-link {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: 2px solid #5ab3e6;
+    color: #5ab3e6;
+    background: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 12px rgba(90, 179, 230, 0.3);
+}
+
+.back-link:hover {
+    background: #5ab3e6;
+    color: white;
+}
+
+/* Thank you banner image */
+.thankyou-banner {
+    margin-bottom: 25px;
+}
+
+.thankyou-banner img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
 }

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const id = parseInt(getDogIdFromURL(), 10);
     const image = document.getElementById("thank-you-dog-image");
     const name = document.getElementById("thank-you-dog-name");
+    const card = document.querySelector(".thankyou-card");
 
     if (!Number.isInteger(id)) {
         if (name) {
@@ -18,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (name) {
                 name.textContent = dog.name;
+            }
+
+            // Gender-based styling
+            if (dog.sex === "Male" && card) {
+                card.classList.add("male");
+            } else if (dog.sex === "Female" && card) {
+                card.classList.add("female");
             }
         })
         .catch(function (error) {

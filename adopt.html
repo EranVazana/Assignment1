@@ -6,11 +6,11 @@
     <title>Adopt a Friend</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="adopt.css">
-    <link rel="icon" href="images/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <header class="top-banner">
-        <img src="images/banner.png" alt="Pawsitive Match" class="banner-logo">
+        <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/banner.png" alt="Pawsitive Match" class="banner-logo">
     </header>
 
     <main class="adopt-page">
@@ -25,16 +25,19 @@
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
                         <input type="text" id="full-name" placeholder="Enter your full name" required>
+                        <span class="error-msg" id="name-error"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" placeholder="example@mail.com" required>
+                        <span class="error-msg" id="email-error"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" placeholder="050-0000000" required>
+                        <span class="error-msg" id="phone-error"></span>
                     </div>
 
                     <button type="submit" class="submit-btn">Send</button>

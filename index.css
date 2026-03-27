@@ -1,58 +1,27 @@
+/* index.css - Styles specific to index.html */
 
 header {
     position: relative;
     margin-bottom: 80px;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    background: linear-gradient(
-        180deg,
-        #bfe3e5 0%,   /* light teal */
-        #cfe6fb 40%,  /* light blue */
-        #ffd6c2 100%  /* light orange */
-    );
-}
-
-.top-banner {
-    width: 100%;
-    padding: 20px 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-     background: linear-gradient(
-        90deg,
-        #2f9ea3,   /* teal (left) */
-        #5ab3e6,   /* light blue */
-        #f28c5b   /* orange */
-    );
-
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-}
-
+/* Index page has a wider banner logo */
 .banner-logo {
     width: 90%;
-    max-width: 800px;
-    height: auto;
 }
 
 .banner-content {
     display: flex;
-    align-items: center;  
+    align-items: center;
     justify-content: space-between;
 }
 
 .banner-text {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* 🔥 centers everything */
+    align-items: center;
     text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     color: white;
-
 }
 
 .banner-text h2 {
@@ -62,7 +31,7 @@ body {
 }
 
 .banner-text h2 span {
-    transform: translateY(-2px); /* 🔥 tweak this */
+    transform: translateY(-2px);
 }
 
 .banner-text p {
@@ -71,9 +40,9 @@ body {
 }
 
 .title-box {
-    width: 95%;             
-    max-width: 1200px;       
-    margin: 20px auto 40px; 
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto 40px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -82,19 +51,19 @@ body {
     font-size: 52px;
     font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    color: #2f3e46;   /* deep soft dark */
-
+    color: #2f3e46;
     margin: 0;
     letter-spacing: 1px;
-
     text-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
+
 .subtitle {
     margin-top: 10px;
     font-size: 20px;
     font-family: 'Fredoka', sans-serif;
     color: #555;
 }
+
 .subtitle::after {
     content: "";
     display: block;
@@ -102,7 +71,6 @@ body {
     height: 4px;
     margin: 20px auto 0;
     border-radius: 10px;
-
     background: #5ab3e6;
 }
 
@@ -120,10 +88,9 @@ body {
     padding: 15px;
     text-align: center;
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* 🔥 key */
+    justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -132,7 +99,7 @@ body {
     font-size: 20px;
     font-weight: 600;
     color: #2f3e46;
-    margin: 18px  10px;
+    margin: 18px 10px;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     position: relative;
@@ -150,7 +117,7 @@ body {
 }
 
 .dog-card:hover {
-    transform: translateY(-10px) scale(1.02); 
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -186,7 +153,7 @@ body {
     overflow: hidden;
     border-radius: 8px;
     background: transparent;
-    background-image: url("images/bones-bg.png");
+    background-image: url("https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/bones-bg.png");
     background-size: cover;
     background-position: center;
     border: 2px solid #008080;
@@ -212,13 +179,25 @@ body {
     padding: 8px 16px;
     border-radius: 20px;
     background: #ffffff;
-   
     text-decoration: none;
     display: inline-block;
     border: 2px solid #008080;
-
     font-size: 15px;
     font-family: 'Fredoka', sans-serif;
     font-weight: 600;
     color: #008080;
+}
+
+/* About section footer */
+.about-section {
+    width: 100%;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.about-banner {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 20px 20px 0 0;
 }

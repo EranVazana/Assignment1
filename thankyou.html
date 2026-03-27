@@ -6,28 +6,33 @@
     <title>Thank You! - Dog Adoption</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="thankyou.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Thank You!</h1>
-        </header>
+    <header class="top-banner">
+        <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/banner.png" alt="Pawsitive Match" class="banner-logo">
+    </header>
 
-        <main class="thank-you-card">
-            <div id="dog-info">
-                <div class="image-container">
-                    <img id="thank-you-dog-image" src="" alt="Dog Image">
+    <main class="thankyou-page">
+        <div class="thankyou-container">
+            <section class="thankyou-card">
+                <div class="thankyou-banner">
+                    <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/thankyou-banner.png" alt="Thank You For Adopting!">
                 </div>
-                <h2 id="thank-you-dog-name">Loading...</h2>
-            </div>
 
-            <p class="message">Thank you for your enquiry!</p>
+                <div class="dog-preview">
+                    <img id="thank-you-dog-image" src="" alt="Dog Image">
+                    <h2 id="thank-you-dog-name">Loading...</h2>
+                </div>
 
-            <div class="navigation">
-                <a href="index.html" class="back-link">Back to home</a>
-            </div>
-        </main>
-    </div>
+                <p class="message">Thank you for your enquiry!</p>
+
+                <div class="back-nav">
+                    <a href="index.html" class="back-link">← Back to Home</a>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <script src="script.js"></script>
     <script src="thankyou.js"></script>
