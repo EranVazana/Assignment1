@@ -1,28 +1,82 @@
+<!--
+ * dog.html - Dog Detail Page
+ *
+ * Displays full information about a single dog.
+ * Receives the dog's index via URL query parameter: dog.html?id=N
+ *
+ * dog.js reads the 'id' parameter, fetches the dog's data via fetchDogById(),
+ * and populates: image, name, breed, age, gender, vaccination status,
+ * house-trained status, and story.
+ *
+ * Navigation:
+ *   - "Prev" / "Next" buttons to browse between dogs (hidden at boundaries)
+ *   - "Back to List" link → index.html
+ *   - "Adopt Me" button → adopt.html?id=N
+ *
+ * Gender-based styling applied dynamically by dog.js:
+ *   - .male   → blue borders & background
+ *   - .female → pink borders & background
+ *
+ * Stylesheets: styles.css (common), dog.css (page-specific)
+ * Scripts:     script.js (shared utilities), dog.js (page logic)
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Details</title>
+
+    <!-- Common styles shared across all pages -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific styles for the detail card layout -->
     <link rel="stylesheet" href="dog.css">
+
     <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+
+    <!--
+     * Top Banner
+     * Site-wide header with the Pawsitive Match logo.
+    -->
     <header class="top-banner">
         <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/banner.png" alt="Pawsitive Match" class="banner-logo">
     </header>
 
-    
     <main class="dog-page">
         <div class="dog-container">
+
+            <!--
+             * Dog Details Card
+             * Main content card displaying all dog information.
+             * Gets .male or .female class added by dog.js for gender-based styling.
+            -->
             <section class="dog-details-card">
+
+                <!--
+                 * Hero Image Container
+                 * Large dog photo with bones-bg.png background pattern.
+                 * On hover: image switches to object-fit: contain for full view.
+                 * Gets .male/.female class for colored border.
+                -->
                 <div class="hero-image-container">
                     <img src="" alt="Dog image" id="dog-image">
                 </div>
 
+                <!--
+                 * Dog Name Heading
+                 * Populated by dog.js with "{dog.name} Details".
+                 * Has a colored underline via CSS ::after (blue for male, pink for female).
+                -->
                 <h1 id="dog-name">DOG NAME</h1>
 
+                <!--
+                 * Dog Info Grid
+                 * Two-column grid layout: labels on the left, values on the right.
+                 * Boolean values (vaccinated, house_trained) displayed as status pills
+                 * using formatBoolean(): true → "Yes", false → "No", null → "Unknown".
+                -->
                 <div class="dog-info-grid">
                     <div class="info-label">• Breed:</div>
                     <div class="info-value" id="dog-breed">Breed</div>
@@ -46,13 +100,28 @@
                     <div class="info-label">• Story:</div>
                     <div class="info-value" id="dog-story"></div>
                 </div>
-            <div class="card-adopt">
-                <a id="adopt-btn" href="adopt.html">
-                    <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/adopt.png" alt="Adopt Me">
-                </a>
-            </div>
+
+                <!--
+                 * Adopt Button
+                 * Links to adopt.html?id=N (href set dynamically by dog.js).
+                 * Uses a custom image button (adopt.png).
+                -->
+                <div class="card-adopt">
+                    <a id="adopt-btn" href="adopt.html">
+                        <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/adopt.png" alt="Adopt Me">
+                    </a>
+                </div>
             </section>
 
+            <!--
+             * Navigation Actions
+             * Three-column flex layout:
+             *   Left:   "← Previous" button (id="prev-btn", hidden when id == MIN_ID)
+             *   Center: "Back to List" link → index.html
+             *   Right:  "Next →" button (id="next-btn", hidden when id == MAX_ID)
+             *
+             * Click handlers set by dog.js to navigate to dog.html?id=(id ± 1).
+            -->
             <div class="dog-actions">
                 <div class="action-left">
                     <button id="prev-btn">← Previous</button>
@@ -69,7 +138,9 @@
         </div>
     </main>
 
+    <!-- Common utility functions: getDogIdFromURL(), formatBoolean(), fetchAllDogs(), fetchDogById() -->
     <script src="script.js"></script>
+    <!-- Page-specific logic: fetches dog by ID, populates details, handles prev/next navigation -->
     <script src="dog.js"></script>
 </body>
 </html>

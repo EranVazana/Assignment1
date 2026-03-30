@@ -1,11 +1,18 @@
+/**
+ * script.js - Shared utility functions for all pages.
+ * Provides API fetch functions, URL helpers, and display formatters.
+ */
+
+/** Base URL for the Postman mock server. */
 const BASE_URL = "https://b799e904-0d3e-4d2b-afe2-9292b5ce8721.mock.pstmn.io";
 
+/** Min and max valid dog IDs (array indices 0–5). */
 const MIN_ID = 0;
 const MAX_ID = 5;
 
 /**
- * Extracts the 'id' parameter from the current URL.
- * Example: if URL is dog.html?id=2, it returns "2".
+ * Reads and returns the 'id' query parameter from the current URL.
+ * Example: dog.html?id=2 → returns "2".
  */
 function getDogIdFromURL() {
     const params = new URLSearchParams(window.location.search);
@@ -31,7 +38,7 @@ async function fetchAllDogs() {
 }
 
 /**
- * Fetches data for a single dog by its ID.
+ * Fetches a single dog by its array index.
  * Used on dog.html, adopt.html, and thankyou.html.
  */
 async function fetchDogById(id) {
@@ -54,8 +61,8 @@ async function fetchDogById(id) {
 }
 
 /**
- * Formats boolean values into human-readable strings.
- * Converts true -> "Yes", false -> "No", and null/undefined -> "Unknown".
+ * Converts boolean values for display.
+ * true → "Yes", false → "No", null/undefined → "Unknown".
  */
 function formatBoolean(value) {
     if (value === null || value === undefined) {
@@ -65,8 +72,8 @@ function formatBoolean(value) {
 }
 
 /**
- * Sends adoption form data to the server via POST request.
- * @param {Object} data - Contains email, fullname, and phone.
+ * Sends adoption form data to the server via POST.
+ * @param {Object} data - { email, fullname, phone }
  */
 async function sendAdoptionRequest(data) {
     try {
@@ -80,6 +87,6 @@ async function sendAdoptionRequest(data) {
         return await response.json();
     } catch (error) {
         console.error("Error in POST request:", error);
-        throw error; // Pass the error to the caller
+        throw error;
     }
 }

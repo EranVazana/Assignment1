@@ -1,14 +1,42 @@
-/* thankyou.css - Styles specific to thankyou.html */
+/*
+ * thankyou.css - Styles Specific to thankyou.html (Thank You Page)
+ *
+ * Defines the layout for the confirmation page shown after
+ * submitting the adoption form: banner image, dog preview,
+ * confirmation message, and back-to-home button.
+ *
+ * Sections:
+ *   1. Page Layout              — padding and container
+ *   2. Thank You Card           — main content card
+ *   3. Dog Preview Override     — circular image size for this page
+ *   4. Confirmation Message     — green success text
+ *   5. Gender-Based Styling     — male/female card & image variants
+ *   6. Back Link Override       — styled as a rounded button (overrides styles.css)
+ *   7. Thank You Banner         — decorative heading image
+ */
+
+/* ===========================================
+   1. Page Layout
+   =========================================== */
 
 .thankyou-page {
     padding: 40px 20px;
 }
 
+/* Narrow centered container */
 .thankyou-container {
     width: min(94%, 550px);
     margin: 0 auto;
 }
 
+/* ===========================================
+   2. Thank You Card
+   =========================================== */
+
+/*
+ * Main content card displaying the confirmation.
+ * Gets .male or .female class from thankyou.js for gender styling.
+ */
 .thankyou-card {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid #5ab3e6;
@@ -18,18 +46,31 @@
     text-align: center;
 }
 
-/* Circular dog preview */
+/* ===========================================
+   3. Dog Preview Override
+   =========================================== */
+
+/*
+ * Sets the circular dog image to 180×180px on the thankyou page.
+ * Base circular styling (border-radius, object-fit) comes from styles.css.
+ */
 .dog-preview img {
     width: 180px;
     height: 180px;
 }
 
+/* Dog name heading below the circular image */
 #thank-you-dog-name {
     font-size: 28px;
     color: #2f3e46;
     margin: 10px 0 20px;
 }
 
+/* ===========================================
+   4. Confirmation Message
+   =========================================== */
+
+/* Green success text: "Thank you for your enquiry!" */
 .message {
     font-size: 20px;
     color: #28a745;
@@ -37,17 +78,29 @@
     margin-bottom: 30px;
 }
 
-/* Gender-based card styling */
+/* ===========================================
+   5. Gender-Based Styling
+   =========================================== */
+
+/*
+ * Gender classes added by thankyou.js based on dog.sex.
+ * Changes the card border/background and the circular
+ * dog preview image border color.
+ */
+
+/* Male: blue accent */
 .thankyou-card.male {
     border-color: #5ab3e6;
     background-color: #f0f8ff;
 }
 
+/* Female: pink accent */
 .thankyou-card.female {
     border-color: #ff85b5;
     background: #fff0f6;
 }
 
+/* Gender-colored circular image border */
 .thankyou-card.female .dog-preview img {
     border-color: #ff85b5;
 }
@@ -56,7 +109,15 @@
     border-color: #5ab3e6;
 }
 
-/* Back link - styled as button on thankyou page */
+/* ===========================================
+   6. Back Link Override
+   =========================================== */
+
+/*
+ * Overrides the plain text .back-link from styles.css.
+ * On the thankyou page, the back link is styled as a
+ * rounded button with blue border and hover fill effect.
+ */
 .back-link {
     display: inline-block;
     padding: 12px 30px;
@@ -77,7 +138,15 @@
     color: white;
 }
 
-/* Thank you banner image */
+/* ===========================================
+   7. Thank You Banner
+   =========================================== */
+
+/*
+ * Decorative banner image replacing the text heading.
+ * Displays the "Thank You For Adopting!" graphic
+ * with rounded corners, max 400px wide.
+ */
 .thankyou-banner {
     margin-bottom: 25px;
 }
@@ -87,4 +156,13 @@
     max-width: 400px;
     height: auto;
     border-radius: 12px;
+}
+
+.thankyou-heading {
+    font-size: 20px;
+    color: #999;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 10px;
 }

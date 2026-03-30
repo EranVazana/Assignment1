@@ -1,4 +1,25 @@
-/* dog.css - Styles specific to dog.html */
+/*
+ * dog.css - Styles Specific to dog.html (Dog Detail Page)
+ *
+ * Defines the layout for the dog detail view: hero image,
+ * info grid, status pills, adopt button, and prev/next navigation.
+ *
+ * Sections:
+ *   1. Header & Page Layout     — spacing and container
+ *   2. Details Card              — main card with gender variants
+ *   3. Hero Image                — large photo with bones background
+ *   4. Dog Name                  — heading with gender-colored underline
+ *   5. Info Grid                 — two-column label/value layout
+ *   6. Status Pills              — colored badges for boolean values
+ *   7. Dog Story                 — biography text block
+ *   8. Adopt Button              — custom image link to adopt page
+ *   9. Navigation Actions        — prev / back to list / next buttons
+ *  10. Responsive Breakpoints    — tablet (900px) and mobile (600px)
+ */
+
+/* ===========================================
+   1. Header & Page Layout
+   =========================================== */
 
 header {
     margin-bottom: 30px;
@@ -8,11 +29,21 @@ header {
     padding: 20px;
 }
 
+/* Centered container, max 1250px wide */
 .dog-container {
     width: min(96%, 1250px);
     margin: 0 auto;
 }
 
+/* ===========================================
+   2. Details Card
+   =========================================== */
+
+/*
+ * Main content card displaying all dog information.
+ * Gender class (.male / .female) added by dog.js changes
+ * the border color and background tint.
+ */
 .dog-details-card {
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
@@ -23,16 +54,28 @@ header {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* Male: blue border, light blue background */
 .dog-details-card.male {
     border-color: #5ab3e6;
     background-color: #f0f8ff;
 }
 
+/* Female: pink border, light pink background */
 .dog-details-card.female {
     border-color: #ff85b5;
     background: #fff0f6;
 }
 
+/* ===========================================
+   3. Hero Image
+   =========================================== */
+
+/*
+ * Large image container with bones-bg.png pattern.
+ * On hover: switches from object-fit: cover to contain,
+ * scaling down to show the full uncropped image.
+ * Gets .male/.female class from dog.js for colored border.
+ */
 .hero-image-container {
     width: 100%;
     height: 320px;
@@ -44,6 +87,7 @@ header {
     position: relative;
 }
 
+/* Gender-colored borders for the hero image */
 .hero-image-container.male {
     border: 2px solid #5ab3e6;
 }
@@ -60,12 +104,23 @@ header {
     transition: transform 0.4s ease;
 }
 
+/* Hover effect: show full image, scale down */
 .hero-image-container:hover img {
     object-fit: contain;
     background: transparent;
     transform: scale(0.9);
 }
 
+/* ===========================================
+   4. Dog Name
+   =========================================== */
+
+/*
+ * Large centered heading populated by dog.js with "{name} Details".
+ * Has a colored underline via ::after pseudo-element:
+ *   - Male:   blue (#5ab3e6), 120px wide
+ *   - Female: pink (#ff85b5), 160px wide
+ */
 #dog-name {
     font-size: 48px;
     font-family: 'Fredoka', sans-serif;
@@ -79,6 +134,7 @@ header {
     position: relative;
 }
 
+/* Blue underline for male dogs */
 .dog-details-card.male #dog-name::after {
     content: "";
     display: block;
@@ -89,6 +145,7 @@ header {
     background: #5ab3e6;
 }
 
+/* Pink underline for female dogs */
 .dog-details-card.female #dog-name::after {
     content: "";
     display: block;
@@ -99,6 +156,16 @@ header {
     background: #ff85b5;
 }
 
+/* ===========================================
+   5. Info Grid
+   =========================================== */
+
+/*
+ * Two-column CSS Grid layout for dog attributes.
+ * Left column (220px): labels (Breed, Age, Gender, etc.)
+ * Right column (400–700px): values
+ * Collapses to single column on screens ≤ 900px.
+ */
 .dog-info-grid {
     display: grid;
     grid-template-columns: 220px minmax(400px, 700px);
@@ -125,6 +192,18 @@ header {
     align-items: center;
 }
 
+/* ===========================================
+   6. Status Pills
+   =========================================== */
+
+/*
+ * Colored badge/pill for boolean fields (Vaccinated, House Trained).
+ * Values set by formatBoolean() in script.js:
+ *   .yes     → green border & text  (true)
+ *   .no      → red border & text    (false)
+ *   .unknown → dark border & text   (null)
+ * Class applied dynamically by dog.js.
+ */
 .status-pill {
     display: inline-flex;
     justify-content: center;
@@ -155,6 +234,11 @@ header {
     color: #333;
 }
 
+/* ===========================================
+   7. Dog Story
+   =========================================== */
+
+/* Biography text block with comfortable line spacing */
 #dog-story {
     line-height: 1.6;
     max-width: 100%;
@@ -162,6 +246,15 @@ header {
     white-space: pre-line;
 }
 
+/* ===========================================
+   8. Adopt Button
+   =========================================== */
+
+/*
+ * Custom image button linking to adopt.html?id=N.
+ * Uses adopt.png image with hover scale effect.
+ * href set dynamically by dog.js.
+ */
 .card-adopt {
     margin-top: 30px;
     display: flex;
@@ -188,6 +281,19 @@ header {
     transform: scale(1.05);
 }
 
+/* ===========================================
+   9. Navigation Actions
+   =========================================== */
+
+/*
+ * Three-column flex layout for dog browsing:
+ *   Left:   "← Previous" button (id="prev-btn")
+ *   Center: "Back to List" link
+ *   Right:  "Next →" button (id="next-btn")
+ *
+ * Prev hidden when id == MIN_ID, Next hidden when id == MAX_ID.
+ * Click handlers set by dog.js to navigate to dog.html?id=(id ± 1).
+ */
 .dog-actions {
     width: 100%;
     display: flex;
@@ -215,6 +321,7 @@ header {
     justify-content: flex-end;
 }
 
+/* Shared button styles for prev/next */
 .dog-actions button {
     padding: 10px 20px;
     min-width: 180px;
@@ -226,12 +333,14 @@ header {
     transition: all 0.2s ease;
 }
 
+/* Previous button: teal accent */
 #prev-btn {
     border: 2px solid #2f9ea3;
     color: #2f9ea3;
     box-shadow: 0 5px 12px rgba(47, 158, 163, 0.3);
 }
 
+/* Next button: orange accent */
 #next-btn {
     border: 2px solid #f28c5b;
     color: #f28c5b;
@@ -248,6 +357,7 @@ header {
     color: white;
 }
 
+/* "Back to List" center link styled as a button */
 .middle-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -270,6 +380,16 @@ header {
     color: white;
 }
 
+/* ===========================================
+   10. Responsive Breakpoints
+   =========================================== */
+
+/*
+ * Tablet (≤ 900px):
+ *   - Info grid collapses to single column
+ *   - Navigation buttons stack vertically
+ *   - Hero image height reduced
+ */
 @media (max-width: 900px) {
     .banner-logo {
         width: 35%;
@@ -306,6 +426,12 @@ header {
     }
 }
 
+/*
+ * Mobile (≤ 600px):
+ *   - Further reduced font sizes and image heights
+ *   - Card padding decreased
+ *   - Banner logo widened for small screens
+ */
 @media (max-width: 600px) {
     .banner-logo {
         width: 55%;

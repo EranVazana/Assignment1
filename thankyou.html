@@ -1,32 +1,91 @@
+<!--
+ * thankyou.html - Thank You / Confirmation Page
+ *
+ * Displays a confirmation message after submitting the adoption form.
+ * Receives the dog's index via URL query parameter: thankyou.html?id=N
+ *
+ * thankyou.js reads the 'id' parameter, fetches the dog's data via fetchDogById(),
+ * and displays the dog's image and name.
+ *
+ * Page Content:
+ *   - "Thank You For Adopting!" banner image (replaces text heading)
+ *   - Circular dog photo and name
+ *   - "Thank you for your enquiry!" confirmation message
+ *   - "Back to Home" link → index.html
+ *
+ * Fallback: If no valid ID is provided, displays a generic confirmation message.
+ *
+ * Gender-based styling applied dynamically by thankyou.js:
+ *   - .male   → blue card & image border
+ *   - .female → pink card & image border
+ *
+ * Stylesheets: styles.css (common), thankyou.css (page-specific)
+ * Scripts:     script.js (shared utilities), thankyou.js (page logic)
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You! - Dog Adoption</title>
+
+    <!-- Common styles shared across all pages -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific styles for the thank you card layout -->
     <link rel="stylesheet" href="thankyou.css">
+
     <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+
+    <!--
+     * Top Banner
+     * Site-wide header with the Pawsitive Match logo.
+    -->
     <header class="top-banner">
         <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/banner.png" alt="Pawsitive Match" class="banner-logo">
     </header>
 
     <main class="thankyou-page">
         <div class="thankyou-container">
+
+            <!--
+             * Thank You Card
+             * Main content card displaying the confirmation.
+             * Gets .male or .female class added by thankyou.js for gender-based styling.
+            -->
             <section class="thankyou-card">
+                <h1 class="thankyou-heading">Thank You!</h1>
+
+                <!--
+                 * Thank You Banner Image
+                 * Decorative image replacing the text heading.
+                 * Displays "Thank You For Adopting!" graphic.
+                -->
                 <div class="thankyou-banner">
                     <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/thankyou-banner.png" alt="Thank You For Adopting!">
                 </div>
 
+
+                <!--
+                 * Dog Preview
+                 * Circular dog image and name.
+                 * Populated dynamically by thankyou.js via fetchDogById().
+                 * Falls back to "Your adoption request was sent." if no valid ID.
+                -->
                 <div class="dog-preview">
                     <img id="thank-you-dog-image" src="" alt="Dog Image">
                     <h2 id="thank-you-dog-name">Loading...</h2>
                 </div>
 
+                <!-- Confirmation message displayed to the user -->
                 <p class="message">Thank you for your enquiry!</p>
 
+                <!--
+                 * Back Navigation
+                 * Styled as a button on this page (overridden in thankyou.css).
+                 * Links back to the main dog list page (index.html).
+                -->
                 <div class="back-nav">
                     <a href="index.html" class="back-link">← Back to Home</a>
                 </div>
@@ -34,7 +93,9 @@
         </div>
     </main>
 
+    <!-- Common utility functions: getDogIdFromURL(), formatBoolean(), fetchAllDogs(), fetchDogById() -->
     <script src="script.js"></script>
+    <!-- Page-specific logic: fetches dog by ID, populates image/name, applies gender styling -->
     <script src="thankyou.js"></script>
 </body>
 </html>

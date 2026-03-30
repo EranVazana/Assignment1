@@ -1,14 +1,37 @@
+<!--
+ * index.html - Dog List Page (Main Page)
+ *
+ * Displays a grid of 6 dog cards available for adoption.
+ * Each card contains an image, name, and a "More Info" link.
+ *
+ * Data is loaded dynamically via fetchAllDogs() from the REST API.
+ * index.js populates each card's image (src), name (textContent),
+ * link (href → dog.html?id=N), and gender-based styling (male/female class).
+ *
+ * Stylesheets: styles.css (common), index.css (page-specific)
+ * Scripts:     script.js (shared utilities), index.js (page logic)
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Adoption Portal</title>
+
+    <!-- Common styles shared across all pages -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific styles for the dog card grid layout -->
     <link rel="stylesheet" href="index.css">
+
     <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+
+    <!--
+     * Top Banner
+     * Site-wide header with logo and tagline.
+     * Uses a horizontal gradient background (teal → blue → orange).
+    -->
     <header class="top-banner">
         <div class="banner-content">
            <div class="logo-container">
@@ -23,11 +46,28 @@
     </header>
 
     <main>
+        <!--
+         * Page Title Section
+         * Displays the main heading and subtitle.
+         * The subtitle has a decorative underline via CSS ::after.
+        -->
         <div class="title-box">
             <h1 class="main-title">🦴 Dogs for Adoption 🦴</h1>
             <p class="subtitle">Find your new best friend today!</p>
         </div>
 
+        <!--
+         * Dog Cards Container
+         * Contains 6 static card elements displayed in a CSS flex-wrap grid.
+         * Each card structure:
+         *   - <img>  (initially empty src — populated by index.js with first_image_url)
+         *   - <h2>   (initially empty — populated with dog.name)
+         *   - <a>    "More Info" link (href set to dog.html?id=N by index.js)
+         *
+         * Gender-based styling applied dynamically in index.js:
+         *   - .male   class → blue border & background
+         *   - .female class → pink border & background
+        -->
         <div class="dogs-container">
             <div class="dog-card">
                     <div class="dog-image-wrapper">
@@ -79,11 +119,18 @@
         </div>
     </main>
 
+    <!--
+     * About Section Footer
+     * Displays the "About Pawsitive Match" banner image
+     * at the bottom of the page.
+    -->
     <footer class="about-section">
         <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/about-banner.png" alt="About Pawsitive Match - The Official BGU Adopting Center" class="about-banner">
     </footer>
 
+    <!-- Common utility functions: getDogIdFromURL(), formatBoolean(), fetchAllDogs(), fetchDogById() -->
     <script src="script.js"></script>
+    <!-- Page-specific logic: fetches all dogs and populates the 6 card elements -->
     <script src="index.js"></script>
 </body>
 </html>

@@ -1,12 +1,39 @@
-/* ============================================
-   styles.css - Common Styles for All Pages
-   ============================================ */
+/*
+ * styles.css - Common Styles for All Pages
+ *
+ * Contains shared reset, base typography, layout primitives,
+ * and reusable component styles used across all 4 HTML pages.
+ *
+ * Loaded FIRST in every HTML file, before page-specific CSS.
+ * Page-specific files may override these defaults as needed.
+ *
+ * Sections:
+ *   1. Reset & Base        — box-sizing, body, links, images, form elements
+ *   2. Top Banner           — gradient header bar with logo
+ *   3. Container            — centered content wrapper
+ *   4. Back Navigation      — shared back-link styling
+ *   5. Dog Preview          — circular image used in adopt & thankyou pages
+ *   6. Color Palette Ref    — gender-based accent colors
+ */
 
-/* === Reset & Base === */
+/* ===========================================
+   1. Reset & Base
+   =========================================== */
+
+/*
+ * Universal box-sizing reset.
+ * Ensures padding and border are included in element width/height.
+ */
 * {
     box-sizing: border-box;
 }
 
+/*
+ * Base body styles.
+ * Sets the global font (Fredoka), text color, and the
+ * vertical gradient background (teal → blue → orange)
+ * used consistently across all pages.
+ */
 body {
     margin: 0;
     min-height: 100vh;
@@ -20,14 +47,17 @@ body {
     );
 }
 
+/* Links inherit parent color by default */
 a {
     color: inherit;
 }
 
+/* Prevent images from overflowing their container */
 img {
     max-width: 100%;
 }
 
+/* Form elements inherit the body font */
 button,
 input,
 select,
@@ -35,7 +65,15 @@ textarea {
     font: inherit;
 }
 
-/* === Top Banner === */
+/* ===========================================
+   2. Top Banner
+   =========================================== */
+
+/*
+ * Gradient header bar displayed at the top of every page.
+ * Horizontal gradient: teal (#2f9ea3) → blue (#5ab3e6) → orange (#f28c5b).
+ * The banner-logo width defaults to 20%, overridden to 90% in index.css.
+ */
 .top-banner {
     width: 100%;
     padding: 20px 0;
@@ -46,19 +84,39 @@ textarea {
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
+/*
+ * Banner logo image.
+ * Default width: 20% (used on dog, adopt, thankyou pages).
+ * Overridden to 90% in index.css for the wider home page banner.
+ */
 .banner-logo {
     width: 20%;
     max-width: 800px;
     height: auto;
 }
 
-/* === Container === */
+/* ===========================================
+   3. Container
+   =========================================== */
+
+/*
+ * Generic centered container.
+ * Max width 1200px with 94% fluid width on smaller screens.
+ */
 .container {
     width: min(94%, 1200px);
     margin: 0 auto;
 }
 
-/* === Back Navigation === */
+/* ===========================================
+   4. Back Navigation
+   =========================================== */
+
+/*
+ * Shared back-navigation wrapper and link.
+ * Used on adopt.html (plain text link) and thankyou.html (styled as button).
+ * thankyou.css overrides .back-link to render it as a rounded button.
+ */
 .back-nav {
     margin-top: 20px;
     text-align: center;
@@ -74,13 +132,33 @@ textarea {
     text-decoration: underline;
 }
 
-/* === Gender-Based Color Accents (shared palette) === */
-/* Male: #5ab3e6  |  Female: #ff85b5 */
+/* ===========================================
+   5. Dog Preview (Circular Image)
+   =========================================== */
 
-/* === Dog Preview (circular image - used in adopt & thankyou) === */
+/*
+ * Circular dog photo used on the adopt and thankyou pages.
+ * Size (width/height) is set in each page's specific CSS:
+ *   - adopt.css:    150px × 150px
+ *   - thankyou.css: 180px × 180px
+ * Border color overridden by gender classes (.male/.female).
+ */
 .dog-preview img {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #5ab3e6;
     margin-bottom: 15px;
 }
+
+/* ===========================================
+   6. Color Palette Reference
+   =========================================== */
+
+/*
+ * Gender-Based Color Accents (shared across all pages):
+ *   Male:   #5ab3e6 (blue)   — borders, backgrounds, underlines
+ *   Female: #ff85b5 (pink)   — borders, backgrounds, underlines
+ *
+ * Applied dynamically via JavaScript by adding .male or .female
+ * class to the page's main card element.
+ */

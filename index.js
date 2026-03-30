@@ -1,4 +1,7 @@
-
+/**
+ * index.js - Populates the 6 dog cards on the main page.
+ * Fetches all dogs, then sets each card's image, name, link, and gender class.
+ */
 
 document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".dog-card");
@@ -20,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 title.textContent = dog.name;
 
+                /** Apply gender class for blue/pink card styling */
                 if (dog.sex === "Male") {
                     card.classList.add("male");
                 } else if (dog.sex === "Female") {

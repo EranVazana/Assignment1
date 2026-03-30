@@ -1,16 +1,42 @@
-/* adopt.css - Styles specific to adopt.html */
+/*
+ * adopt.css - Styles Specific to adopt.html (Adoption Form Page)
+ *
+ * Defines the layout for the adoption form: dog preview,
+ * form fields with validation styling, and submit button.
+ *
+ * Sections:
+ *   1. Page Layout              — padding and container
+ *   2. Adoption Card            — main card housing the form
+ *   3. Dog Preview Override     — circular image size for this page
+ *   4. Form Layout              — flex column with gap
+ *   5. Form Fields              — input styling and focus state
+ *   6. Submit Button            — green CTA button
+ *   7. Validation Styling       — error messages and input states
+ *   8. Gender-Based Styling     — male/female card & image variants
+ */
 
-/* Container for the adoption form */
+/* ===========================================
+   1. Page Layout
+   =========================================== */
+
 .adopt-page {
     padding: 40px 20px;
 }
 
+/* Narrow centered container for form readability */
 .adopt-container {
     width: min(94%, 600px);
     margin: 0 auto;
 }
 
-/* The card housing the form */
+/* ===========================================
+   2. Adoption Card
+   =========================================== */
+
+/*
+ * White card housing the dog preview and form.
+ * Gets .male or .female class from adopt.js for gender styling.
+ */
 .adopt-card {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid #5ab3e6;
@@ -20,19 +46,34 @@
     text-align: center;
 }
 
-/* Dog preview section */
+/* ===========================================
+   3. Dog Preview Override
+   =========================================== */
+
+/*
+ * Sets the circular dog image to 150×150px on the adopt page.
+ * Base circular styling (border-radius, object-fit) comes from styles.css.
+ */
 .dog-preview img {
     width: 150px;
     height: 150px;
 }
 
+/* "Adopt [Dog Name]" heading */
 #adopt-title {
     font-size: 32px;
     color: #2f3e46;
     margin-bottom: 30px;
 }
 
-/* Form styling */
+/* ===========================================
+   4. Form Layout
+   =========================================== */
+
+/*
+ * Vertical flex layout with 20px gap between form groups.
+ * Text aligned left for labels and inputs.
+ */
 #adoption-form {
     display: flex;
     flex-direction: column;
@@ -40,6 +81,10 @@
     text-align: left;
 }
 
+/*
+ * Each form group contains a label, input, and error message span.
+ * Vertical flex with 8px gap.
+ */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -51,6 +96,14 @@
     color: #2f3e46;
 }
 
+/* ===========================================
+   5. Form Fields
+   =========================================== */
+
+/*
+ * Input fields with rounded corners and smooth border transition.
+ * On focus: blue border (#5ab3e6) replaces the default gray.
+ */
 .form-group input {
     padding: 12px;
     border: 2px solid #ddd;
@@ -64,7 +117,14 @@
     outline: none;
 }
 
-/* Submit button */
+/* ===========================================
+   6. Submit Button
+   =========================================== */
+
+/*
+ * Green submit button with rounded pill shape.
+ * Hover effect: darker green + slight scale up.
+ */
 .submit-btn {
     margin-top: 10px;
     padding: 15px;
@@ -84,6 +144,19 @@
     transform: scale(1.03);
 }
 
+/* ===========================================
+   7. Validation Styling
+   =========================================== */
+
+/*
+ * Real-time validation feedback applied by adopt.js.
+ *
+ * .error-msg: Red text below each input for validation messages.
+ *             min-height prevents layout shift when message appears.
+ *
+ * .invalid:   Red border on inputs that fail validation.
+ * .valid:     Green border on inputs that pass validation.
+ */
 .error-msg {
     color: #d9534f;
     font-size: 13px;
@@ -100,16 +173,29 @@
     border-color: #28a745;
 }
 
+/* ===========================================
+   8. Gender-Based Styling
+   =========================================== */
+
+/*
+ * Gender classes added by adopt.js based on dog.sex.
+ * Changes the card border/background and the circular
+ * dog preview image border color.
+ */
+
+/* Male: blue accent */
 .adopt-card.male {
     border-color: #5ab3e6;
     background-color: #f0f8ff;
 }
 
+/* Female: pink accent */
 .adopt-card.female {
     border-color: #ff85b5;
     background: #fff0f6;
 }
 
+/* Gender-colored circular image border */
 .adopt-card.female .dog-preview img {
     border-color: #ff85b5;
 }

@@ -1,7 +1,14 @@
+/**
+ * dog.js - Displays full details for a single dog.
+ * Reads 'id' from the URL, fetches the dog, populates the detail card,
+ * and configures prev/next navigation.
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
     const idStr = getDogIdFromURL();
     const id = parseInt(idStr, 10);
 
+    /** Set adopt button link to include the current dog's ID */
     const adoptBtn = document.getElementById("adopt-btn");
     if (adoptBtn && !isNaN(id)) {
         adoptBtn.href = "adopt.html?id=" + id;
@@ -9,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isNaN(id)) {
         fetchDogById(id).then(function(dog) {
+
+            /** Populate image, name, and text fields */
             document.getElementById("dog-image").src = dog.first_image_url;
             document.getElementById("dog-image").alt = dog.name;
             document.getElementById("dog-name").textContent = dog.name + " Details";
@@ -17,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dog-story").textContent = dog.story;
             document.title = dog.name + " Details";
 
+            /** Apply gender class and display gender with icon */
             const card = document.querySelector(".dog-details-card");
             let genderText = dog.sex;
             if (dog.sex === "Male") {
@@ -28,9 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("dog-gender").textContent = genderText;
 
+            /** Display boolean fields via formatBoolean() */
             document.getElementById("dog-vaccinated").textContent = formatBoolean(dog.vaccinated);
             document.getElementById("dog-house-trained").textContent = formatBoolean(dog.house_trained);
 
+            /** Prev/Next navigation — hide at boundaries, set click handlers */
             const prevBtn = document.getElementById("prev-btn");
             const nextBtn = document.getElementById("next-btn");
 

@@ -1,15 +1,51 @@
-/* index.css - Styles specific to index.html */
+/*
+ * index.css - Styles Specific to index.html (Dog List Page)
+ *
+ * Defines the layout for the main page: header with tagline,
+ * page title, 6-card flex-wrap grid, and the about-section footer.
+ *
+ * Sections:
+ *   1. Header                — spacing below banner
+ *   2. Banner Override        — wider logo for the home page
+ *   3. Banner Content         — logo + tagline layout
+ *   4. Page Title             — main heading and subtitle
+ *   5. Dog Card Grid          — flex-wrap container for 6 cards
+ *   6. Dog Card               — individual card styling
+ *   7. Gender-Based Cards     — blue (male) / pink (female) variants
+ *   8. Card Image Wrapper     — image container with bones background
+ *   9. More Info Link         — "More Info" button per card
+ *  10. About Section Footer   — bottom banner image
+ */
+
+/* ===========================================
+   1. Header
+   =========================================== */
 
 header {
     position: relative;
     margin-bottom: 80px;
 }
 
-/* Index page has a wider banner logo */
+/* ===========================================
+   2. Banner Override
+   =========================================== */
+
+/*
+ * The index page uses a wider banner logo (90%) compared to
+ * the default 20% defined in styles.css.
+ */
 .banner-logo {
     width: 90%;
 }
 
+/* ===========================================
+   3. Banner Content
+   =========================================== */
+
+/*
+ * Horizontal layout for the logo and tagline text.
+ * The tagline sits beside the logo with white text and drop shadow.
+ */
 .banner-content {
     display: flex;
     align-items: center;
@@ -39,6 +75,14 @@ header {
     font-size: 18px;
 }
 
+/* ===========================================
+   4. Page Title
+   =========================================== */
+
+/*
+ * Centered title box with main heading and subtitle.
+ * The subtitle has a decorative blue underline via ::after pseudo-element.
+ */
 .title-box {
     width: 95%;
     max-width: 1200px;
@@ -64,6 +108,7 @@ header {
     color: #555;
 }
 
+/* Decorative underline below the subtitle */
 .subtitle::after {
     content: "";
     display: block;
@@ -74,6 +119,14 @@ header {
     background: #5ab3e6;
 }
 
+/* ===========================================
+   5. Dog Card Grid
+   =========================================== */
+
+/*
+ * Flex container with wrapping for the 6 dog cards.
+ * Cards are 33.33% width (3 per row) with 20px gap.
+ */
 .dogs-container {
     display: flex;
     flex-wrap: wrap;
@@ -82,6 +135,16 @@ header {
     padding: 20px;
 }
 
+/* ===========================================
+   6. Dog Card
+   =========================================== */
+
+/*
+ * Individual dog card.
+ * Uses flexbox column layout with space-between to push
+ * the "More Info" link to the bottom of the card.
+ * Hover effect: lifts up and scales slightly.
+ */
 .dog-card {
     width: calc(33.33% - 20px);
     border-radius: 15px;
@@ -94,6 +157,7 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Dog name with decorative underline via ::after */
 .dog-card h2 {
     font-family: 'Fredoka', sans-serif;
     font-size: 20px;
@@ -116,11 +180,23 @@ header {
     background: #2f3e46;
 }
 
+/* Hover: lift up + scale + shadow */
 .dog-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* ===========================================
+   7. Gender-Based Cards
+   =========================================== */
+
+/*
+ * Gender classes added dynamically by index.js.
+ * Male:   blue border (#4da6ff), light blue background
+ * Female: pink border (#ff66b2), light pink background
+ * Hover shadow color also matches gender.
+ * The h2 underline color changes to match the gender accent.
+ */
 .dog-card.male {
     border: 2px solid #4da6ff;
     background-color: #f0f8ff;
@@ -147,6 +223,16 @@ header {
     background: #f28cb5;
 }
 
+/* ===========================================
+   8. Card Image Wrapper
+   =========================================== */
+
+/*
+ * Image container with bones-bg.png background pattern.
+ * Fixed height (250px) with overflow hidden.
+ * Images use object-fit: cover; on hover switches to contain
+ * with a zoom-in effect for full image view.
+ */
 .dog-image-wrapper {
     width: 100%;
     height: 250px;
@@ -168,12 +254,22 @@ header {
     display: block;
 }
 
+/* Hover: show full image with zoom effect */
 .dog-card:hover .dog-image-wrapper img {
     object-fit: contain;
     background: transparent;
     transform: scale(1.1);
 }
 
+/* ===========================================
+   9. More Info Link
+   =========================================== */
+
+/*
+ * "More Info" button-styled link at the bottom of each card.
+ * Pushed to bottom via margin-top: auto (flexbox).
+ * Teal border and text with white background.
+ */
 .more-info {
     margin-top: auto;
     padding: 8px 16px;
@@ -188,7 +284,15 @@ header {
     color: #008080;
 }
 
-/* About section footer */
+/* ===========================================
+   10. About Section Footer
+   =========================================== */
+
+/*
+ * Full-width footer at the bottom of the index page.
+ * Displays the "About Pawsitive Match" banner image
+ * with rounded top corners.
+ */
 .about-section {
     width: 100%;
     margin-top: 60px;

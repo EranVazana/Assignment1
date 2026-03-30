@@ -1,9 +1,16 @@
+/**
+ * thankyou.js - Displays confirmation after adoption form submission.
+ * Loads the dog's image and name, applies gender styling.
+ * Falls back to a generic message if no valid ID or fetch fails.
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
     const id = parseInt(getDogIdFromURL(), 10);
     const image = document.getElementById("thank-you-dog-image");
     const name = document.getElementById("thank-you-dog-name");
     const card = document.querySelector(".thankyou-card");
 
+    /** No valid ID — show generic message and stop */
     if (!Number.isInteger(id)) {
         if (name) {
             name.textContent = "Your adoption request was sent.";
@@ -11,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    /** Fetch dog data, populate image/name, apply gender class */
     fetchDogById(id)
         .then(function (dog) {
             if (image) {
@@ -21,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 name.textContent = dog.name;
             }
 
-            // Gender-based styling
             if (dog.sex === "Male" && card) {
                 card.classList.add("male");
             } else if (dog.sex === "Female" && card) {

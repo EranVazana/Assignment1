@@ -1,9 +1,20 @@
+/**
+ * adopt.js - Handles the adoption form page.
+ * Loads dog preview, validates inputs in real-time, and navigates
+ * to thankyou.html on valid submit.
+ *
+ * Validation regex:
+ *   Name:  /^[a-zA-Z\u0590-\u05FF\s]+$/  — English/Hebrew letters + spaces
+ *   Email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/   — name@domain.extension
+ *   Phone: /^05\d-?\d{7}$/                — Israeli mobile (dash optional)
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
     const idStr = getDogIdFromURL();
     const id = parseInt(idStr, 10);
     const form = document.getElementById("adoption-form");
 
-    // === Name validation ===
+    /** Name validation — English/Hebrew letters and spaces only */
     const nameInput = document.getElementById("full-name");
     const nameError = document.getElementById("name-error");
     const nameRegex = /^[a-zA-Z\u0590-\u05FF\s]+$/;
@@ -24,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // === Email validation ===
+    /** Email validation — name@domain.extension format */
     const emailInput = document.getElementById("email");
     const emailError = document.getElementById("email-error");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // === Phone validation ===
+    /** Phone validation — Israeli mobile: 05X-XXXXXXX, dash optional */
     const phoneInput = document.getElementById("phone");
     const phoneError = document.getElementById("phone-error");
     const phoneRegex = /^05\d-?\d{7}$/;
@@ -66,11 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    /** Submit handler — validates all fields, navigates on success */
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            // Block submit if name is invalid
             const nameValue = nameInput.value.trim();
             if (!nameRegex.test(nameValue) || nameValue === "") {
                 nameInput.classList.add("invalid");
@@ -79,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Email check
             const emailValue = emailInput.value.trim();
             if (!emailRegex.test(emailValue) || emailValue === "") {
                 emailInput.classList.add("invalid");
@@ -88,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Phone check
             const phoneValue = phoneInput.value.trim();
             if (!phoneRegex.test(phoneValue) || phoneValue === "") {
                 phoneInput.classList.add("invalid");
@@ -101,16 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Load dog details for the UI
+    /** Load dog preview and apply gender-based card styling */
     if (!isNaN(id)) {
         fetchDogById(id).then(dog => {
             const image = document.getElementById("adopt-dog-image");
             const title = document.getElementById("adopt-title");
+            const card = document.querySelector(".adopt-card");
+
             if (image) image.src = dog.first_image_url;
             if (title) title.textContent = "Adopt " + dog.name;
-            const card = document.querySelector(".adopt-card");  // <-- this was missing
 
-            // Gender-based styling
             if (dog.sex === "Male" && card) {
                 card.classList.add("male");
                 if (image) image.style.borderColor = "#5ab3e6";

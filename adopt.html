@@ -1,39 +1,113 @@
+<!--
+ * adopt.html - Adoption Form Page
+ *
+ * Displays an adoption inquiry form for a specific dog.
+ * Receives the dog's index via URL query parameter: adopt.html?id=N
+ *
+ * adopt.js reads the 'id' parameter, fetches the dog's data via fetchDogById(),
+ * and displays the dog's image and name above the form.
+ *
+ * Form Fields (all required, with real-time validation on 'input' event):
+ *   - Full Name  (type="text")  — regex: English/Hebrew letters and spaces only
+ *   - Email      (type="email") — regex: name@domain.extension format
+ *   - Phone      (type="tel")   — regex: Israeli mobile 05X-XXXXXXX (dash optional)
+ *
+ * On valid submission: e.preventDefault() → navigates to thankyou.html?id=N.
+ *
+ * Gender-based styling applied dynamically by adopt.js:
+ *   - .male   → blue card & image border
+ *   - .female → pink card & image border
+ *
+ * Stylesheets: styles.css (common), adopt.css (page-specific)
+ * Scripts:     script.js (shared utilities), adopt.js (validation & page logic)
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopt a Friend</title>
+
+    <!-- Common styles shared across all pages -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific styles for form layout and validation styling -->
     <link rel="stylesheet" href="adopt.css">
+
     <link rel="icon" href="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+
+    <!--
+     * Top Banner
+     * Site-wide header with the Pawsitive Match logo.
+    -->
     <header class="top-banner">
         <img src="https://raw.githubusercontent.com/EranVazana/Assignment1/main/images/banner.png" alt="Pawsitive Match" class="banner-logo">
     </header>
 
     <main class="adopt-page">
         <div class="adopt-container">
+
+            <!--
+             * Adoption Card
+             * Contains the dog preview and adoption form.
+             * Gets .male or .female class added by adopt.js for gender-based styling.
+            -->
             <section class="adopt-card">
+
+                <!--
+                 * Dog Preview
+                 * Circular dog image and "Adopt [Dog Name]" heading.
+                 * Image src and title text populated dynamically by adopt.js.
+                -->
                 <div class="dog-preview">
                     <img src="" alt="Selected Dog" id="adopt-dog-image">
                     <h1 id="adopt-title">Adopt [Dog Name]</h1>
                 </div>
 
+                <!--
+                 * Adoption Form
+                 * On submit: e.preventDefault() blocks default behavior,
+                 * validates all fields, then navigates to thankyou.html?id=N.
+                 *
+                 * Each .form-group contains:
+                 *   - <label>                for the field
+                 *   - <input>                with HTML required attribute
+                 *   - <span class="error-msg"> for real-time validation messages
+                 *
+                 * Input classes added dynamically by adopt.js:
+                 *   - .invalid → red border   (validation failed)
+                 *   - .valid   → green border  (validation passed)
+                -->
                 <form id="adoption-form">
+
+                    <!--
+                     * Full Name Field
+                     * Regex: /^[a-zA-Z\u0590-\u05FF\s]+$/
+                     * Allows English letters, Hebrew letters (Unicode range), and spaces only.
+                    -->
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
                         <input type="text" id="full-name" placeholder="Enter your full name" required>
                         <span class="error-msg" id="name-error"></span>
                     </div>
 
+                    <!--
+                     * Email Field
+                     * Regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                     * Validates name@domain.extension format (no spaces allowed).
+                    -->
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" placeholder="example@mail.com" required>
                         <span class="error-msg" id="email-error"></span>
                     </div>
 
+                    <!--
+                     * Phone Field
+                     * Regex: /^05\d-?\d{7}$/
+                     * Israeli mobile format: 05X followed by 7 digits (dash optional).
+                    -->
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" placeholder="050-0000000" required>
@@ -44,13 +118,19 @@
                 </form>
             </section>
             
+            <!--
+             * Cancel Navigation
+             * Links back to the main dog list page (index.html).
+            -->
             <div class="back-nav">
                 <a href="index.html" class="back-link">← Cancel and Back to List</a>
             </div>
         </div>
     </main>
 
+    <!-- Common utility functions: getDogIdFromURL(), formatBoolean(), fetchAllDogs(), fetchDogById() -->
     <script src="script.js"></script>
+    <!-- Page-specific logic: form validation (name, email, phone) and dog preview loading -->
     <script src="adopt.js"></script>
 </body>
 </html>
