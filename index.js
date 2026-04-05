@@ -2,7 +2,6 @@
  * index.js - Populates the 6 dog cards on the main page.
  * Fetches all dogs, then sets each card's image, name, link, and gender class.
  */
-
 document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".dog-card");
 

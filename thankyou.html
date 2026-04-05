@@ -1,27 +1,3 @@
-<!--
- * thankyou.html - Thank You / Confirmation Page
- *
- * Displays a confirmation message after submitting the adoption form.
- * Receives the dog's index via URL query parameter: thankyou.html?id=N
- *
- * thankyou.js reads the 'id' parameter, fetches the dog's data via fetchDogById(),
- * and displays the dog's image and name.
- *
- * Page Content:
- *   - "Thank You For Adopting!" banner image (replaces text heading)
- *   - Circular dog photo and name
- *   - "Thank you for your enquiry!" confirmation message
- *   - "Back to Home" link → index.html
- *
- * Fallback: If no valid ID is provided, displays a generic confirmation message.
- *
- * Gender-based styling applied dynamically by thankyou.js:
- *   - .male   → blue card & image border
- *   - .female → pink card & image border
- *
- * Stylesheets: styles.css (common), thankyou.css (page-specific)
- * Scripts:     script.js (shared utilities), thankyou.js (page logic)
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>

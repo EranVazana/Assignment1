@@ -3,7 +3,6 @@
  * Loads the dog's image and name, applies gender styling.
  * Falls back to a generic message if no valid ID or fetch fails.
  */
-
 document.addEventListener("DOMContentLoaded", function () {
     const id = parseInt(getDogIdFromURL(), 10);
     const image = document.getElementById("thank-you-dog-image");

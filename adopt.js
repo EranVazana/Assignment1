@@ -8,7 +8,6 @@
  *   Email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/   — name@domain.extension
  *   Phone: /^05\d-?\d{7}$/                — Israeli mobile (dash optional)
  */
-
 document.addEventListener("DOMContentLoaded", function () {
     const idStr = getDogIdFromURL();
     const id = parseInt(idStr, 10);

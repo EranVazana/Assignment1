@@ -1,22 +1,3 @@
-/*
- * dog.css - Styles Specific to dog.html (Dog Detail Page)
- *
- * Defines the layout for the dog detail view: hero image,
- * info grid, status pills, adopt button, and prev/next navigation.
- *
- * Sections:
- *   1. Header & Page Layout     — spacing and container
- *   2. Details Card              — main card with gender variants
- *   3. Hero Image                — large photo with bones background
- *   4. Dog Name                  — heading with gender-colored underline
- *   5. Info Grid                 — two-column label/value layout
- *   6. Status Pills              — colored badges for boolean values
- *   7. Dog Story                 — biography text block
- *   8. Adopt Button              — custom image link to adopt page
- *   9. Navigation Actions        — prev / back to list / next buttons
- *  10. Responsive Breakpoints    — tablet (900px) and mobile (600px)
- */
-
 /* ===========================================
    1. Header & Page Layout
    =========================================== */

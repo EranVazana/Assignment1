@@ -1,20 +1,3 @@
-/*
- * adopt.css - Styles Specific to adopt.html (Adoption Form Page)
- *
- * Defines the layout for the adoption form: dog preview,
- * form fields with validation styling, and submit button.
- *
- * Sections:
- *   1. Page Layout              — padding and container
- *   2. Adoption Card            — main card housing the form
- *   3. Dog Preview Override     — circular image size for this page
- *   4. Form Layout              — flex column with gap
- *   5. Form Fields              — input styling and focus state
- *   6. Submit Button            — green CTA button
- *   7. Validation Styling       — error messages and input states
- *   8. Gender-Based Styling     — male/female card & image variants
- */
-
 /* ===========================================
    1. Page Layout
    =========================================== */

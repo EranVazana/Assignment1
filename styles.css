@@ -1,21 +1,3 @@
-/*
- * styles.css - Common Styles for All Pages
- *
- * Contains shared reset, base typography, layout primitives,
- * and reusable component styles used across all 4 HTML pages.
- *
- * Loaded FIRST in every HTML file, before page-specific CSS.
- * Page-specific files may override these defaults as needed.
- *
- * Sections:
- *   1. Reset & Base        — box-sizing, body, links, images, form elements
- *   2. Top Banner           — gradient header bar with logo
- *   3. Container            — centered content wrapper
- *   4. Back Navigation      — shared back-link styling
- *   5. Dog Preview          — circular image used in adopt & thankyou pages
- *   6. Color Palette Ref    — gender-based accent colors
- */
-
 /* ===========================================
    1. Reset & Base
    =========================================== */

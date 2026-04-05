@@ -1,5 +1,5 @@
 /**
- * script.js - Shared utility functions for all pages.
+ * script.js - Shared utility functions for all pages. 
  * Provides API fetch functions, URL helpers, and display formatters.
  */
 
@@ -12,7 +12,7 @@ const MAX_ID = 5;
 
 /**
  * Reads and returns the 'id' query parameter from the current URL.
- * Example: dog.html?id=2 → returns "2".
+ * Example: dog.html?id=1 → returns "1".
  */
 function getDogIdFromURL() {
     const params = new URLSearchParams(window.location.search);

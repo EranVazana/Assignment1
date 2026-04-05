@@ -1,20 +1,3 @@
-/*
- * thankyou.css - Styles Specific to thankyou.html (Thank You Page)
- *
- * Defines the layout for the confirmation page shown after
- * submitting the adoption form: banner image, dog preview,
- * confirmation message, and back-to-home button.
- *
- * Sections:
- *   1. Page Layout              — padding and container
- *   2. Thank You Card           — main content card
- *   3. Dog Preview Override     — circular image size for this page
- *   4. Confirmation Message     — green success text
- *   5. Gender-Based Styling     — male/female card & image variants
- *   6. Back Link Override       — styled as a rounded button (overrides styles.css)
- *   7. Thank You Banner         — decorative heading image
- */
-
 /* ===========================================
    1. Page Layout
    =========================================== */

@@ -3,7 +3,6 @@
  * Reads 'id' from the URL, fetches the dog, populates the detail card,
  * and configures prev/next navigation.
  */
-
 document.addEventListener("DOMContentLoaded", function () {
     const idStr = getDogIdFromURL();
     const id = parseInt(idStr, 10);
