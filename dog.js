@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isNaN(id)) {
         fetchDogById(id).then(function(dog) {
+            console.log("Fetched dog data:", dog);
 
             /** Populate image, name, and text fields */
             document.getElementById("dog-image").src = dog.first_image_url;

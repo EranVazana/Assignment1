@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     card.classList.add("female");
                 }
 
-                link.href = "dog.html?id=" + index;
+                link.href = "dog.html?id=" + (index + 1); // IDs are 1-based
                 link.textContent = "More Info";
             });
         })

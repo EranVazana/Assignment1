@@ -7,8 +7,8 @@
 const BASE_URL = "https://b799e904-0d3e-4d2b-afe2-9292b5ce8721.mock.pstmn.io";
 
 /** Min and max valid dog IDs (array indices 0–5). */
-const MIN_ID = 0;
-const MAX_ID = 5;
+const MIN_ID = 1;
+const MAX_ID = 6;
 
 /**
  * Reads and returns the 'id' query parameter from the current URL.
@@ -17,6 +17,24 @@ const MAX_ID = 5;
 function getDogIdFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id");
+}
+
+/**
+ * Fetches a single dog by its array index.
+ * Used on dog.html, adopt.html, and thankyou.html.
+ */
+async function fetchDogById(id) {
+    try {
+        const response = await fetch(BASE_URL + "/dogs/" + id);
+        if (!response.ok) {
+            throw new Error("Failed to fetch dog data.");
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching dog data:", error);
+        return null; // Return null on error to allow graceful handling
+    }
 }
 
 /**
@@ -33,29 +51,6 @@ async function fetchAllDogs() {
         return data;
     } catch (error) {
         console.error("Error fetching all dogs:", error);
-        throw error;
-    }
-}
-
-/**
- * Fetches a single dog by its array index.
- * Used on dog.html, adopt.html, and thankyou.html.
- */
-async function fetchDogById(id) {
-    try {
-        const dogs = await fetchAllDogs();
-        if (!Array.isArray(dogs)) {
-            throw new Error("Invalid dogs response.");
-        }
-
-        const index = Number.parseInt(id, 10);
-        if (!Number.isInteger(index) || index < 0 || index >= dogs.length) {
-            throw new Error("Dog id is out of range.");
-        }
-
-        return dogs[index];
-    } catch (error) {
-        console.error("Error fetching dog data:", error);
         throw error;
     }
 }
